@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laugh today</title>
+    <style>
+      .line1 {
+        font-size: 500%;
+        text-align: center;
+        font-family: monospace;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="line1">Wow Sooooooo Funny 🤣🤣 !!!!!!!!</p>
+
+    <div id="joke-container">
+      <p
+        style="
+          font-size: 200%;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+            sans-serif;
+        "
+      >
+        Come on, Get ready to Hahahaha
+      </p>
+    </div>
+
+    <button id="get-joke-button">Get Joke</button>
+
+    <script>
+      function getDadJoke() {
+        fetch("https://icanhazdadjoke.com/", {
+          headers: {
+            Accept: "text/plain",
+          },
+        })
+          .then((response) => response.text())
+          .then((joke) => {
+            document.getElementById("joke-container").innerHTML =
+              "<p>" + joke + "</p>";
+          })
+          .catch((error) => console.error("Error fetching joke:", error));
+      }
+      document
+        .getElementById("get-joke-button")
+        .addEventListener("click", getDadJoke);
+    </script>
+  </body>
+</html>
